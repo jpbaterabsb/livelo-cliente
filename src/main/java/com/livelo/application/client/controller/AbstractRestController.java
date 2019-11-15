@@ -65,4 +65,13 @@ public abstract class AbstractRestController<T, ID, DTO> implements IRestControl
         return mapper.toDTO(obj);
     }
 
+    @Override
+    @CrossOrigin
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public DTO updatePartial(@Valid @RequestBody Map<String, Object> map, @PathVariable ID id) {
+        T obj = this.service.updatePartial(map,id);
+        return mapper.toDTO(obj);
+    }
+
 }

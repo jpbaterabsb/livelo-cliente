@@ -1,5 +1,9 @@
 package com.livelo.application.client.controller;
 
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -16,5 +20,5 @@ public interface IRestController<T, ID, DTO> {
 
     public DTO update(DTO dto, ID id);
 
-
+    DTO updatePartial(Map<String,Object> params, ID id);
 }

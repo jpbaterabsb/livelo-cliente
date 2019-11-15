@@ -4,11 +4,13 @@ import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -16,7 +18,10 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.http.HttpStatus;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.HttpMediaTypeException;
+import org.springframework.web.server.ResponseStatusException;
 
 
 public abstract class AbstractService<T, ID> implements IService<T, ID> {
@@ -56,6 +61,19 @@ public abstract class AbstractService<T, ID> implements IService<T, ID> {
     @Override
     public void deleteAll() {
         this.repository.deleteAll();
+    }
+
+
+    @Override
+    public T updatePartial(Map<String, Object> params, ID id) {
+        T t = findById(id);
+        params.forEach((k, v) -> {
+            Field field = Optional.ofNullable(ReflectionUtils.findField(t.getClass(), k))
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,"field not found"));
+            field.setAccessible(true);
+            ReflectionUtils.setField(field, t, v);
+        });
+        return this.repository.save(t);
     }
 
     @Override

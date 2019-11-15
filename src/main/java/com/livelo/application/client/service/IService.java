@@ -5,18 +5,19 @@ import java.util.Map;
 
 public interface IService<T, ID> {
 
-    public T findById(ID id);
+   T findById(ID id);
 
-    public List<T> findAll();
+   List<T> findAll();
 
-    public void deleteById(ID id);
+   void deleteById(ID id);
 
-    public T save(T t);
+   T save(T t);
 
-    public T update(T t, ID id);
+   T update(T t, ID id);
 
-    public void deleteAll();
+   void deleteAll();
 
-    public List<T> findByObject(Map<String, Object> params);
+   List<T> findByObject(Map<String, Object> params);
+   T updatePartial(Map<String, Object> params,ID id);
 
 }
