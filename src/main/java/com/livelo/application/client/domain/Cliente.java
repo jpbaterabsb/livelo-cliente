@@ -1,5 +1,6 @@
 package com.livelo.application.client.domain;
 
+import com.livelo.application.client.validator.ValueOfEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

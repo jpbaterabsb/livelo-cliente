@@ -35,7 +35,7 @@ public class ClienteRestControllerTest extends CrudRestTest<ClienteDTO,Integer> 
                 .dataNascimento(LocalDate.MIN)
                 .idade(23)
                 .nomeCompleto("Joao Paulo Oliveira Santos")
-                .sexo(Sexo.MASCULINO)
+                .sexo(Sexo.MASCULINO.name())
                 .id(1)
                 .build();
     }

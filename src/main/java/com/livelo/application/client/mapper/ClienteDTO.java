@@ -1,6 +1,7 @@
 package com.livelo.application.client.mapper;
 
 import com.livelo.application.client.domain.Sexo;
+import com.livelo.application.client.validator.ValueOfEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,8 +23,8 @@ public class ClienteDTO {
     @NotBlank
     private String nomeCompleto;
 
-    @NotNull
-    private Sexo sexo;
+    @ValueOfEnum(enumClass = Sexo.class, message = "Enum value not exist")
+    private String sexo;
 
     @NotNull
     private LocalDate dataNascimento;
