@@ -104,6 +104,10 @@ N/A
 ## Swagger-UI
 - /swagger-ui.html
 
-## Docker
+## Getting started
+- mvn clean install
 - docker build -t client .
 - docker run -p 8080:8080 -d client
+
+## Heroku swagger url
+- https://mysterious-caverns-15644.herokuapp.com/swagger-ui.html#/
