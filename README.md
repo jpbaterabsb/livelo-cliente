@@ -101,6 +101,8 @@ N/A
 }
 ```
 
+## Swagger-UI
+- /swagger-ui.html
 
 ## Docker
 - docker build -t client .
