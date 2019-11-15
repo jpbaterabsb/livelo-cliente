@@ -23,7 +23,7 @@ public abstract class AbstractRestController<T, ID, DTO> implements IRestControl
     @GetMapping
     @Override
     @ResponseStatus(HttpStatus.OK)
-    public List<DTO> find(@RequestParam Map<String, Object> params) {
+    public List<DTO> find(@RequestParam(required = false) Map<String, Object> params) {
         if (params.isEmpty()){
             return mapper.toDTO(this.service.findAll());
         }
