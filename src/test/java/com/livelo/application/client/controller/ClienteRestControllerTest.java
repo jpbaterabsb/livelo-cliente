@@ -3,6 +3,7 @@ package com.livelo.application.client.controller;
 import com.livelo.application.client.constants.Path;
 import com.livelo.application.client.controller.controller.CrudRestTest;
 import com.livelo.application.client.domain.Cidade;
+import com.livelo.application.client.domain.Estado;
 import com.livelo.application.client.domain.Sexo;
 import com.livelo.application.client.mapper.ClienteDTO;
 import com.livelo.application.client.repository.CidadeRepository;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ClienteRestControllerTest extends CrudRestTest<ClienteDTO,Integer> {
 
@@ -19,9 +21,8 @@ public class ClienteRestControllerTest extends CrudRestTest<ClienteDTO,Integer> 
     private CidadeRepository cidadeRepository;
 
     @Before
-    public void setUp(){
+    public void createCidade(){
         cidadeRepository.save(Cidade.builder()
-                .id(1)
                 .estado("MG")
                 .nome("Sobradinho")
                 .build());
@@ -32,7 +33,7 @@ public class ClienteRestControllerTest extends CrudRestTest<ClienteDTO,Integer> 
     protected ClienteDTO createObject() {
         return ClienteDTO.builder()
                 .cidadeId(1)
-                .dataNascimento(LocalDate.MIN)
+                .dataNascimento(LocalDate.of(2000,11,1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .idade(23)
                 .nomeCompleto("Joao Paulo Oliveira Santos")
                 .sexo(Sexo.MASCULINO.name())

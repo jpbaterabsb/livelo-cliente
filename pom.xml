@@ -194,7 +194,11 @@
 								<exclude>**/mapper/**</exclude>
 								<exclude>**/utils/**</exclude>
 								<exclude>**/domain/**</exclude>
-								<exclude>**/App.java</exclude>
+								<exclude>**/validator/**</exclude>
+								<exclude>**/validator/**</exclude>
+								<exclude>**/constants/**</exclude>
+								<exclude>**/exceptions/**</exclude>
+								<exclude>**/App.*</exclude>
 							</excludes>
 						</configuration>
 					</execution>
@@ -210,7 +214,7 @@
 										<limit>
 											<counter>CLASS</counter>
 											<value>COVEREDRATIO</value>
-											<minimum>0.8</minimum>
+											<minimum>0.7</minimum>
 										</limit>
 									</limits>
 								</rule>

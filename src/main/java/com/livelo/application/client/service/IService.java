@@ -18,6 +18,7 @@ public interface IService<T, ID> {
    void deleteAll();
 
    List<T> findByObject(Map<String, Object> params);
+
    T updatePartial(Map<String, Object> params,ID id);
 
 }

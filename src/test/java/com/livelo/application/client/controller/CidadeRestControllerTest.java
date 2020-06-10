@@ -6,7 +6,7 @@ import com.livelo.application.client.mapper.CidadeDTO;
 import org.junit.Test;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class CidadeRestControllerTest extends CrudRestTest<CidadeDTO,Integer> {
+public class CidadeRestControllerTest extends CrudRestTest<CidadeDTO, Integer> {
 
     @Override
     protected CidadeDTO createObject() {
@@ -32,8 +32,8 @@ public class CidadeRestControllerTest extends CrudRestTest<CidadeDTO,Integer> {
     @Override
     protected UriComponentsBuilder getUriWithRequestParams() {
         return uriComponentsBuilder
-                .queryParam("estado","DF")
-                .queryParam("cidade","Sobradinho");
+                .queryParam("estado", "DF")
+                .queryParam("cidade", "Sobradinho");
     }
 
 

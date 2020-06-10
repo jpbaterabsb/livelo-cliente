@@ -10,10 +10,12 @@ import java.util.List;
 public interface ClienteMapper extends IMapper<Cliente,ClienteDTO> {
     @Override
     @Mapping(source = "cidade.id", target = "cidadeId")
+    @Mapping(source = "dataNascimento", target = "dataNascimento", dateFormat = "yyyy-MM-dd")
     ClienteDTO toDTO(Cliente cliente);
 
     @Override
     @Mapping(target = "cidade.id", source = "cidadeId")
+    @Mapping(source = "dataNascimento", target = "dataNascimento", dateFormat = "yyyy-MM-dd")
     Cliente fromDTO(ClienteDTO clienteDTO);
 
     @Override
